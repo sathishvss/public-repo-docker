@@ -1,8 +1,6 @@
 {
-  "name": "node-webapp",
+  "name": "node-root-html",
   "version": "1.0.0",
-  "description": "Simple Node.js webpage app",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
