@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("1. clone the repo"){
+            step{
+                echo "cloning the github repo"
+                sh "git clone git@github.com:sathishvss/public-repo-docker.git."
+            }
+        }
+
+        stage ("2. update the system"){
+            steps{
+                echo "updating the system"
+                sh "yum update -y"
+                sh "yum upgrade -y"
+                sh  "dnf upgrade -y"
+                sh "dnf update -y" 
+             }
+        }
+stage ("3. install the required packages"){
+    steps {
+        echo "install the important packages"
+        sh "yum install -y git"
+        sh "yum install -y docker"
+        sh "systemctl restart docker"
+        sh "systemctl enable docker"
+        sh "docker -v"
+        sh "git -v"
+    }
+}
+ stage ("4. get the system commands output"){
+    steps {
+        echo "out of the linux commands"
+        sh "iostat"
+        sh "free -a"
+        sh "df -h"
+        sh "cat 2026"
+        sh "date"
+    }
+ }
+    }
+}
